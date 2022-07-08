@@ -2,7 +2,7 @@ import com.sun.org.apache.xpath.internal.operations.Bool
 import java.util.Objects
 
 data class Post(
-    val id: Int = 1,
+    var id: Int = 1,
     val ownerId: Int = 1,
     val fromId: Int = 2,
     val createdBy: Int = 3,

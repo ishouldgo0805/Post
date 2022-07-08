@@ -1,22 +1,31 @@
 object WallService {
     var posts = emptyArray<Post>()
 
-    var postID = 0
-
     fun add(post: Post): Post {
-        postID++
-        posts += post
-        return posts.last()
+        var addedPost = post.copy()
+        if (posts.isEmpty()) {
+            addedPost.id = 1
+            posts += addedPost
+        } else {
+            addedPost.id = posts.last().id + 1
+            posts += addedPost
+        }
+        return addedPost
     }
+
     fun update(post: Post): Boolean {
-        for((index, item) in posts.withIndex()) {
-            if (item.id == post.id) {
-                posts[index] = post
+        var updatedPost = post.copy(ownerId = post.ownerId, date = post.date)
+        for ((index, post) in posts.withIndex()) {
+            if (updatedPost.id == post.id) {
+                posts[index] = updatedPost
                 return true
             }
         }
         return false
     }
 }
+
+
+
 
 

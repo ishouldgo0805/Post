@@ -1,9 +1,13 @@
-
 fun main() {
-var post = Post(1, 4)
-    var post2 = Post(2,5)
-    var post3 = Post(3, 6)
+    var post1 = Post(ownerId = 7)
+    var post2 = Post(ownerId = 8)
+    var post3 = Post(ownerId = 10)
 
+    println(WallService.add(post1))
+    println(WallService.add(post2))
     println(WallService.update(post2))
+    println(post2)
+
+
 }
 

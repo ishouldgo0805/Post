@@ -1,6 +1,4 @@
 import WallService.add
-import WallService.postID
-import WallService.posts
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -9,11 +7,9 @@ class WallServiceTest {
 
     @Test
     fun add() {
-        // act
-        add(Post(1))
 
         //assert
-        assertEquals(4, postID)
+        assertEquals(Post(4), add(Post(4)))
 
     }
 
