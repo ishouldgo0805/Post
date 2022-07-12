@@ -1,4 +1,5 @@
 import WallService.add
+import WallService.posts
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -7,6 +8,10 @@ class WallServiceTest {
 
     @Test
     fun add() {
+
+        if (posts.isNotEmpty()) {
+            posts = emptyArray<Post>()
+        } else
 
         //assert
         assertEquals(Post(1,4,1,1,1u,"Post",1,1,true,1,1,1u,1, 1,"Normal", null, emptyArray<Attachments>() ,1,1,emptyArray<String>(),true,false,true,true,true,true,null,1), add(Post(1,4,1,1,1u,"Post",1,1,true,1,1,1u,1, 1,"Normal", null, emptyArray<Attachments>() ,1,1,emptyArray<String>(),true,false,true,true,true,true,null,1)))
