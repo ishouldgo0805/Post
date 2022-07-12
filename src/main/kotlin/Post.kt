@@ -1,5 +1,3 @@
-import com.sun.org.apache.xpath.internal.operations.Bool
-import java.util.Objects
 
 data class Post(
     var id: Int = 1,
@@ -17,13 +15,17 @@ data class Post(
     val reposts: Int = 1,
     val views: Int = 1,
     val postType: String = "Normal",
+    val postSource: PostSource?,
+    val attachments: Array<Attachments>,
+    val geo: Any?,
     val singerID: Int = 7,
+    val copyHistory: Array<String>,
     val canPin: Boolean = true,
     val canDelete: Boolean = true,
     val canEdit: Boolean = true,
     val isPinned: Boolean = true,
     val markedAsAds: Boolean = true,
     val isFavorite: Boolean= true,
-    val donut: Boolean = true,
+    val donut: Donat?,
     val postponedId: Int = 8
 )

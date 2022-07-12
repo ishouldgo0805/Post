@@ -9,7 +9,7 @@ class WallServiceTest {
     fun add() {
 
         //assert
-        assertEquals(Post(4), add(Post(4)))
+        assertEquals(Post(1,4,1,1,1u,"Post",1,1,true,1,1,1u,1, 1,"Normal", null, emptyArray<Attachments>() ,1,1,emptyArray<String>(),true,false,true,true,true,true,null,1), add(Post(1,4,1,1,1u,"Post",1,1,true,1,1,1u,1, 1,"Normal", null, emptyArray<Attachments>() ,1,1,emptyArray<String>(),true,false,true,true,true,true,null,1)))
 
     }
 
@@ -18,11 +18,11 @@ class WallServiceTest {
         // создаём целевой сервис
         val service = WallService
         // заполняем несколькими постами
-        service.add(Post(1,4))
-        service.add(Post(2,5))
-        service.add(Post(3,6))
+        service.add(Post(1,4,1,1,1u,"Post",1,1,true,1,1,1u,1, 1,"Normal", null, emptyArray<Attachments>() ,1,1,emptyArray<String>(),true,false,true,true,true,true,null,1))
+        service.add(Post(2,5,1,1,1u,"Post",1,1,true,1,1,1u,1, 1,"Normal", null, emptyArray<Attachments>() ,1,1,emptyArray<String>(),true,false,true,true,true,true,null,1))
+        service.add(Post(3,6,1,1,1u,"Post",1,1,true,1,1,1u,1, 1,"Normal", null, emptyArray<Attachments>() ,1,1,emptyArray<String>(),true,false,true,true,true,true,null,1))
         // создаём информацию об обновлении
-        val update = Post(1,4)
+        val update = Post(1,4,1,1,1u,"Post",1,1,true,1,1,1u,1, 1,"Normal", null, emptyArray<Attachments>() ,1,1,emptyArray<String>(),true,false,true,true,true,true,null,1)
 
         // выполняем целевое действие
         val result = service.update(update)
@@ -36,11 +36,11 @@ class WallServiceTest {
         // создаём целевой сервис
         val service = WallService
         // заполняем несколькими постами
-        service.add(Post(1,4))
-        service.add(Post(2,5))
-        service.add(Post(3,6))
+        service.add(Post(1,4,1,1,1u,"Post",1,1,true,1,1,1u,1, 1,"Normal", null, emptyArray<Attachments>() ,1,1,emptyArray<String>(),true,false,true,true,true,true,null,1))
+        service.add(Post(2,5,1,1,1u,"Post",1,1,true,1,1,1u,1, 1,"Normal", null, emptyArray<Attachments>() ,1,1,emptyArray<String>(),true,false,true,true,true,true,null,1))
+        service.add(Post(3,6,1,1,1u,"Post",1,1,true,1,1,1u,1, 1,"Normal", null, emptyArray<Attachments>() ,1,1,emptyArray<String>(),true,false,true,true,true,true,null,1))
         // создаём информацию об обновлении
-        val update = Post(1,8)
+        val update = Post(1,8,1,1,1u,"Post",1,1,true,1,1,1u,1, 1,"Normal", null, emptyArray<Attachments>() ,1,1,emptyArray<String>(),true,false,true,true,true,true,null,1)
 
         // выполняем целевое действие
         val result = service.update(update)
