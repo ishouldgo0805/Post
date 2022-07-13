@@ -1,4 +1,5 @@
 import WallService.add
+import WallService.comments
 import WallService.posts
 import org.junit.Test
 
@@ -10,11 +11,11 @@ class WallServiceTest {
     fun add() {
 
         if (posts.isNotEmpty()) {
-            posts = emptyArray<Post>()
+            posts = emptyArray()
         } else
 
         //assert
-        assertEquals(Post(1,4,1,1,1u,"Post",1,1,true,1,1,1u,1, 1,"Normal", null, emptyArray<Attachments>() ,1,1,emptyArray<String>(),true,false,true,true,true,true,null,1), add(Post(1,4,1,1,1u,"Post",1,1,true,1,1,1u,1, 1,"Normal", null, emptyArray<Attachments>() ,1,1,emptyArray<String>(),true,false,true,true,true,true,null,1)))
+            assertEquals(Post(1), add(Post(1)))
 
     }
 
@@ -23,11 +24,17 @@ class WallServiceTest {
         // создаём целевой сервис
         val service = WallService
         // заполняем несколькими постами
-        service.add(Post(1,4,1,1,1u,"Post",1,1,true,1,1,1u,1, 1,"Normal", null, emptyArray<Attachments>() ,1,1,emptyArray<String>(),true,false,true,true,true,true,null,1))
-        service.add(Post(2,5,1,1,1u,"Post",1,1,true,1,1,1u,1, 1,"Normal", null, emptyArray<Attachments>() ,1,1,emptyArray<String>(),true,false,true,true,true,true,null,1))
-        service.add(Post(3,6,1,1,1u,"Post",1,1,true,1,1,1u,1, 1,"Normal", null, emptyArray<Attachments>() ,1,1,emptyArray<String>(),true,false,true,true,true,true,null,1))
+        service.add(
+            Post(1)
+        )
+        service.add(
+            Post(2)
+        )
+        service.add(
+            Post(3)
+        )
         // создаём информацию об обновлении
-        val update = Post(1,4,1,1,1u,"Post",1,1,true,1,1,1u,1, 1,"Normal", null, emptyArray<Attachments>() ,1,1,emptyArray<String>(),true,false,true,true,true,true,null,1)
+        val update = Post(1)
 
         // выполняем целевое действие
         val result = service.update(update)
@@ -41,16 +48,38 @@ class WallServiceTest {
         // создаём целевой сервис
         val service = WallService
         // заполняем несколькими постами
-        service.add(Post(1,4,1,1,1u,"Post",1,1,true,1,1,1u,1, 1,"Normal", null, emptyArray<Attachments>() ,1,1,emptyArray<String>(),true,false,true,true,true,true,null,1))
-        service.add(Post(2,5,1,1,1u,"Post",1,1,true,1,1,1u,1, 1,"Normal", null, emptyArray<Attachments>() ,1,1,emptyArray<String>(),true,false,true,true,true,true,null,1))
-        service.add(Post(3,6,1,1,1u,"Post",1,1,true,1,1,1u,1, 1,"Normal", null, emptyArray<Attachments>() ,1,1,emptyArray<String>(),true,false,true,true,true,true,null,1))
+        service.add(
+            Post(1)
+        )
+        service.add(
+            Post(2)
+        )
+        service.add(
+            Post(3)
+        )
         // создаём информацию об обновлении
-        val update = Post(1,8,1,1,1u,"Post",1,1,true,1,1,1u,1, 1,"Normal", null, emptyArray<Attachments>() ,1,1,emptyArray<String>(),true,false,true,true,true,true,null,1)
+        val update = Post(1)
 
         // выполняем целевое действие
         val result = service.update(update)
 
         // проверяем результат (используйте assertTrue или assertFalse)
         assertTrue(result)
+    }
+
+    @Test(expected = PostNotFoundException::class)
+    fun shouldThrow() {
+        // здесь код с вызовом функции, которая должна выкинуть PostNotFoundException
+        WallService.createComment(8, Comment())
+    }
+
+    @Test
+    fun createComment() {
+        if (comments.isNotEmpty()) {
+            comments = emptyArray()
+        } else WallService.createComment(1, Comment())
+        //assert
+            assertEquals(Comment(1), WallService.createComment(1, Comment(1)))
+
     }
 }

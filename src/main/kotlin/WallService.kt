@@ -1,8 +1,11 @@
+@file:Suppress("NAME_SHADOWING")
+
 object WallService {
     var posts = emptyArray<Post>()
+    var comments = emptyArray<Comment>()
 
     fun add(post: Post): Post {
-        var addedPost = post.copy()
+        val addedPost = post.copy()
         if (posts.isEmpty()) {
             addedPost.id = 1
             posts += addedPost
@@ -14,8 +17,8 @@ object WallService {
     }
 
     fun update(post: Post): Boolean {
-        var updatedPost = post.copy(ownerId = post.ownerId, date = post.date)
-        for ((index, post) in posts.withIndex()) {
+        val updatedPost = post.copy(ownerId = post.ownerId, date = post.date)
+        for ((index) in posts.withIndex()) {
             if (updatedPost.id == post.id) {
                 posts[index] = updatedPost
                 return true
@@ -23,7 +26,22 @@ object WallService {
         }
         return false
     }
+
+    fun createComment(postId: Int, comment: Comment): Comment {
+        val addedComment = comment.copy()
+        if (posts.contains(Post(id = postId))) {
+            comments.plusElement(addedComment)
+
+        } else throw PostNotFoundException()
+        return addedComment
+    }
 }
+
+
+class PostNotFoundException() : Exception() {
+}
+
+
 
 
 
