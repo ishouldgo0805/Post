@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Attachments.kt</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Post</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Attachments.kt</span></div><h1>Attachments.kt</h1><pre class="source lang-java linenums"><span class="nc" id="L1">abstract class Attachments {</span>
+    abstract var type: String
+}
+
+<span class="nc" id="L5">abstract class PhotoAttachment() : Attachments() {</span>
+<span class="nc" id="L6">    override var type: String = &quot;Photo Attachment&quot;</span>
+<span class="nc" id="L7">    open val id: Int = 0</span>
+
+}
+
+
+<span class="nc" id="L12">class Photo(</span>
+<span class="nc" id="L13">    override var type: String = &quot;Photo&quot;,</span>
+<span class="nc" id="L14">    override val id: Int = 1,</span>
+<span class="nc" id="L15">    val albumId: Int = 2,</span>
+<span class="nc" id="L16">    val ownerId: Int = 3,</span>
+<span class="nc" id="L17">    val userId: Int = 4,</span>
+<span class="nc" id="L18">    val text: String = &quot;&quot;,</span>
+<span class="nc" id="L19">    val date: Int = 1,</span>
+<span class="nc" id="L20">    val sizes: Int = 1,</span>
+<span class="nc" id="L21">    val width: Int = 1,</span>
+<span class="nc" id="L22">    val height: Int = 1</span>
+<span class="nc" id="L23">) : PhotoAttachment()</span>
+
+<span class="nc" id="L25">class PostedPhoto(</span>
+<span class="nc" id="L26">    override var type: String = &quot;Posted Photo&quot;,</span>
+<span class="nc" id="L27">    override val id: Int = 1,</span>
+<span class="nc" id="L28">    val photo130: String = &quot;&quot;,</span>
+<span class="nc" id="L29">    val photo640: String = &quot;&quot;,</span>
+
+<span class="nc" id="L31">) : PhotoAttachment()</span>
+
+<span class="nc" id="L33">class Graffiti(</span>
+<span class="nc" id="L34">    override var type: String = &quot;Graffiti&quot;,</span>
+<span class="nc" id="L35">    override val id: Int = 1,</span>
+<span class="nc" id="L36">    val photo130: String = &quot;&quot;,</span>
+<span class="nc" id="L37">    val photo640: String = &quot;&quot;,</span>
+
+<span class="nc" id="L39">    ) : PhotoAttachment()</span>
+
+<span class="nc" id="L41">class Album(</span>
+<span class="nc" id="L42">    override var type: String = &quot;Album&quot;,</span>
+<span class="nc" id="L43">    override val id: Int = 1,</span>
+<span class="nc" id="L44">    val ownerId: Int = 1,</span>
+<span class="nc" id="L45">    val thumb: String = &quot;&quot;,</span>
+<span class="nc" id="L46">    val title: String = &quot;&quot;,</span>
+<span class="nc" id="L47">    val description: String = &quot;&quot;,</span>
+<span class="nc" id="L48">    val created: Int = 1,</span>
+<span class="nc" id="L49">    val updated: Int = 1,</span>
+<span class="nc" id="L50">    val size: Int = 1,</span>
+<span class="nc" id="L51">) : PhotoAttachment()</span>
+
+
+<span class="nc" id="L54">abstract class AudioAttachment() : Attachments() {</span>
+<span class="nc" id="L55">    override var type: String = &quot;Audio Attachment&quot;</span>
+<span class="nc" id="L56">    open val id: Int = 0</span>
+<span class="nc" id="L57">    open val albumId: Int = 0</span>
+<span class="nc" id="L58">    open val ownerId: Int = 0</span>
+
+}
+
+<span class="nc" id="L62">class Audio(</span>
+<span class="nc" id="L63">    override var type: String = &quot;Audio&quot;,</span>
+<span class="nc" id="L64">    override val id: Int = 1,</span>
+<span class="nc" id="L65">    override val albumId: Int = 1,</span>
+<span class="nc" id="L66">    override val ownerId: Int = 1,</span>
+<span class="nc" id="L67">    val artist: String = &quot;&quot;,</span>
+<span class="nc" id="L68">    val title: String = &quot;&quot;,</span>
+<span class="nc" id="L69">    val duration: Int = 1,</span>
+<span class="nc" id="L70">    val url: String = &quot;&quot;,</span>
+<span class="nc" id="L71">    val genreId: Int = 1,</span>
+<span class="nc" id="L72">    val date: Int = 1,</span>
+<span class="nc" id="L73">    val noSearch: Boolean = true,</span>
+<span class="nc" id="L74">    val isHd: Boolean = true</span>
+<span class="nc" id="L75">) : AudioAttachment()</span>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

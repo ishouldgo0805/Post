@@ -1,5 +1,6 @@
 import WallService.add
 import WallService.comments
+import WallService.createComment
 import WallService.posts
 import org.junit.Test
 
@@ -70,16 +71,15 @@ class WallServiceTest {
     @Test(expected = PostNotFoundException::class)
     fun shouldThrow() {
         // здесь код с вызовом функции, которая должна выкинуть PostNotFoundException
-        WallService.createComment(8, Comment())
+        createComment(8, Comment())
     }
 
     @Test
     fun createComment() {
-        if (comments.isNotEmpty()) {
-            comments = emptyArray()
-        } else WallService.createComment(1, Comment())
+        when {
+            comments.isNotEmpty() -> comments = emptyArray()
+        }
         //assert
-            assertEquals(Comment(1), WallService.createComment(1, Comment(1)))
-
+        assert(Comment() == createComment(1, Comment()))
     }
 }

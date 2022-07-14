@@ -1,29 +1,59 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>WallService.kt</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Post</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">WallService.kt</span></div><h1>WallService.kt</h1><pre class="source lang-java linenums">object WallService {
-<span class="pc" id="L2">    var posts = emptyArray&lt;Post&gt;()</span>
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>WallService.kt</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Post</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">WallService.kt</span></div><h1>WallService.kt</h1><pre class="source lang-java linenums">@file:Suppress(&quot;NAME_SHADOWING&quot;)
+
+object WallService {
+<span class="fc" id="L4">    var posts = emptyArray&lt;Post&gt;()</span>
+<span class="pc" id="L5">    var comments = emptyArray&lt;Comment&gt;()</span>
 
     fun add(post: Post): Post {
-<span class="fc" id="L5">        var addedPost = post.copy()</span>
-<span class="fc bfc" id="L6" title="All 4 branches covered.">        if (posts.isEmpty()) {</span>
-<span class="fc" id="L7">            addedPost.id = 1</span>
-<span class="fc" id="L8">            posts += addedPost</span>
-        } else {
-<span class="fc" id="L10">            addedPost.id = posts.last().id + 1</span>
+<span class="fc" id="L8">        val addedPost = post.copy()</span>
+<span class="fc bfc" id="L9" title="All 4 branches covered.">        if (posts.isEmpty()) {</span>
+<span class="fc" id="L10">            addedPost.id = 1</span>
 <span class="fc" id="L11">            posts += addedPost</span>
+        } else {
+<span class="fc" id="L13">            addedPost.id = posts.last().id + 1</span>
+<span class="fc" id="L14">            posts += addedPost</span>
         }
-<span class="fc" id="L13">        return addedPost</span>
+<span class="fc" id="L16">        return addedPost</span>
     }
 
     fun update(post: Post): Boolean {
-<span class="fc" id="L17">        var updatedPost = post.copy(ownerId = post.ownerId, date = post.date)</span>
-<span class="pc bpc" id="L18" title="1 of 2 branches missed.">        for ((index, post) in posts.withIndex()) {</span>
-<span class="pc bpc" id="L19" title="1 of 2 branches missed.">            if (updatedPost.id == post.id) {</span>
-<span class="fc" id="L20">                posts[index] = updatedPost</span>
-<span class="fc" id="L21">                return true</span>
+<span class="fc" id="L20">        val updatedPost = post.copy(ownerId = post.ownerId, date = post.date)</span>
+<span class="pc bpc" id="L21" title="1 of 2 branches missed.">        for ((index) in posts.withIndex()) {</span>
+<span class="pc bpc" id="L22" title="1 of 2 branches missed.">            if (updatedPost.id == post.id) {</span>
+<span class="fc" id="L23">                posts[index] = updatedPost</span>
+<span class="fc" id="L24">                return true</span>
             }
         }
-<span class="nc" id="L24">        return false</span>
+<span class="nc" id="L27">        return false</span>
     }
+
+    /*
+    Р”Р°РЅРЅР°СЏ С„СѓРЅРєС†РёСЏ СЃРЅР°С‡Р°Р»Р° РґРѕР»Р¶РЅР° РїСЂРѕРІРµСЂРёС‚СЊ, СЃСѓС‰РµСЃС‚РІСѓРµС‚ Р»Рё РІ РјР°СЃСЃРёРІРµ posts РїРѕСЃС‚ СЃ id СЂР°РІРЅС‹Рј postId.
+
+    Р•СЃР»Рё СЃСѓС‰РµСЃС‚РІСѓРµС‚, С‚Рѕ РґРѕР±Р°РІРёС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№ РІ РјР°СЃСЃРёРІ comments Рё РІРµСЂРЅСѓС‚СЊ С‚РѕР»СЊРєРѕ С‡С‚Рѕ РґРѕР±Р°РІР»РµРЅРЅС‹Р№ РєРѕРјРјРµРЅС‚Р°СЂРёР№.
+
+    Рђ РІРѕС‚ РµСЃР»Рё РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚ - РІС‹РєРёРЅСѓС‚СЊ РёСЃРєР»СЋС‡РµРЅРёРµ PostNotFoundException.
+
+* С‚Р°Рє РёСЃРєР°С‚СЊ РїРѕСЃС‚ РЅРµР»СЊР·СЏ, С‚Р°Рє РєР°Рє РґР»СЏ С‚РѕРіРѕ, С‡С‚РѕР±С‹ contains РІРµСЂРЅСѓР» true РїРѕСЃС‚С‹ РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РёРґРµРЅС‚РёС‡РЅС‹, С‚Рѕ РµСЃС‚СЊ РІСЃРµ РїРѕР»СЏ РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ СЂР°РІРЅС‹.
+Р�СЃРєР°С‚СЊ РЅСѓР¶РЅРѕ РїРµСЂРµР±РѕСЂРѕРј РІ С†РёРєР»Рµ while
+* РєРѕРїРёСЂРѕРІР°С‚СЊ РЅРёС‡РµРіРѕ РЅРµ РјРµРЅСЏСЏ РЅРµ РЅСѓР¶РЅРѕ, С‚Р°Рє РєР°Рє РІС‹ СЃРѕР·РґР°РµС‚Рµ С‚РѕС‡РЅРѕ С‚Р°РєРѕР№ Р¶Рµ РѕР±СЉРµРєС‚.
+
+     */
+
+    fun createComment(postId: Int, comment: Comment): Comment {
+<span class="pc bpc" id="L44" title="1 of 2 branches missed.">        for (post in posts) {</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">            if (post.id == postId) comments.plusElement(comment) else throw PostNotFoundException()</span>
+        }
+<span class="nc" id="L47">        return comment</span>
+    }
+
 }
+
+<span class="fc" id="L52">    class PostNotFoundException() : Exception() {</span>
+    }
+
+
+
 
 
 
